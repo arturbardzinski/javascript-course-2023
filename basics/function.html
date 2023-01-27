@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    function multiply(a, b, c) {
+      let result = a*b*c;
+      return a*b*c;
+    }
+    let resultmultiply = multiply(2, 3, 10);
+    console.log(resultmultiply);
+    let multiplyresult2 = multiply(4, 2, 12);
+    console.log(multiplyresult2)
+
+    function substract(a, b){
+      return a - b;
+    }
+    let resultSubstract = substract(10, 2);
+    console.log(resultSubstract);
+
+    function getSOmeNumber() {
+      return 78;
+    }
+
+    let money = 1000;
+    let interestRate = 0.05;
+
+    function calculateInvestment(money, interestRate) {
+      return money + (money * interestRate);
+    }
+
+    let investemntResult = calculateInvestment(money, interestRate);
+    console.log(investemntResult);
+    console.log(calculateInvestment(2200, 0.045));
+
+    // faren na cel
+
+    function cToF(celsjusz) {
+      let fahrenheit = celsjusz * 9 / 5 + 32;
+      console.log("cel na far to: \xB0"  + fahrenheit);
+      return fahrenheit;
+    }
+
+    function fToC(fahrenheit) {
+      let celsjusz = (fahrenheit - 32) * 5 / 9;
+      console.log("faar na cel to: \xB0" + celsjusz);
+      return celsjusz;
+    }
+
+    let cel = cToF(20);
+    let fare = fToC(86);
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    let number = prompt("Podaj liczbę całkowitą: ");
+    console.log("Typ liczby to: ",typeof(number));
+    number = Number.parseInt(number);
+    console.log("Typ liczby po zmianie to: ",typeof(number));
+
+    function calculateSquareArea(height) {
+      // return result = Math.pow(height,2);
+      return height * height
+    }
+    let squareArea = calculateSquareArea(number);
+    console.log("Wynik funkcji:",squareArea);
+
+    let number2 = prompt("Podaj liczbę dziesiętną: ");
+    number2 = Number.parseFloat(number2);
+    let squareArea2 = calculateSquareArea(number2);
+    console.log("Wynik funkcji dwa:",squareArea2.toFixed(2));
+  </script>
+</body>
+</html>

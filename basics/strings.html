@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function getUserDescription(name, city, country) {
+      const firstSign = name[0];
+      const nameLength = name.length;
+      const lastSign = name[nameLength - 1];
+      
+      return `
+      Uzytkownik o imieniu ${name} mieszka w miescie ${city},
+      w panstwie ${country}.
+      Pierwszy znak imienia to: ${firstSign}, natomiast 
+      ostatni to ${lastSign}.
+      Imie ma ${nameLength} znakow.
+      `;
+    }
+    const user1 = getUserDescription("Ania", "Kraków", "Polska");
+      console.log(user1);
+      var str = "Ala ma kota oraz Ula ma psa";
+      var p = str.indexOf("ma", 5);
+      var s = str.lastIndexOf("ma");
+      console.log(p);
+      console.log(s);
+
+
+    function validateEmail(email) {
+      let monkeyIndex = email.indexOf("@");
+      if (monkeyIndex < 0)  return false;
+
+      let dotIndex = email.indexOf(".", monkeyIndex);
+      // if (dotIndex == -1) return false;
+
+      if (dotIndex < monkeyIndex) return false;
+      
+
+      return true;
+      }
+      
+    
+    const email1 = "asia@example.com";
+    const email2 = "asia@domena";
+    const email3 = "user.com";
+
+    console.log(email1, validateEmail(email1) );
+    console.log(email2, validateEmail(email2) );
+    console.log(email3, validateEmail(email3) );
+
+    function getUserInformation(name_1, surname_1, job_1) {
+      nameLow = name_1.toUpperCase().trim();
+      surnameLow = surname_1.toUpperCase().trim();
+      jobUp = job_1.toLowerCase().trim();
+      
+      let text = `imie: ${nameLow}, nazwisko: ${surnameLow}`;
+      text = text.concat(`, zawod: ${jobUp}`);
+      return text;
+    };
+
+    let user2 = getUserInformation("ArTur", "bArdzInski", "pROGramIsta");
+    console.log(user2); 
+    // const monkeyInd = email.indexOf("@");
+    // const dotInd = email.lastIndexOf(".");
+    // if (dotInd == -1) return null;
+    // const user = email.slice(0, monkeyInd);
+    // const domainName = email.slice(monkeyInd + 1, dotInd);
+    // return user{ 
+    //   user: user,
+    //   domainName: domainName
+    // }
+    // str.substr(1,4); pobiera od start o okreslonej ilosci znakow
+    // str.substring(2,5); jak slice ale bez ujemnych wartosci
+    // str.split("|") dzieli string ze wzgledu na podany tekst i zachowuje wynik w postaci tablicy np:
+    // let str = "Skoda|Octavia"
+    // let carDetails = str.split("|");
+    // carDetails[1] da nam Octavia
+    function cleanText(text) {
+      text = text.replace(/php/gi, "*".repeat(5));
+      return text;
+    }
+
+    const textExample = 'Nie chce uczyc sie PHP, wole javascript';
+
+    console.log(cleanText(textExample));
+  </script>
+</body>
+</html>

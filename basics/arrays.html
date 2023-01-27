@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // liczone od zera
+    // arrayTest.push("txt"); - dodaje stringa i zwraca dlugosc elementow
+    // delete arrayTest[1] - kasuje element
+    // arrayTest.length
+    // (2 in arrayTest) - czy index 2 jest w tablicy
+    // let arrayTest = Array(10).fill(7); - tworzy 10 indexow i wypelnia je 7
+    // przeglądanie tablicy
+    let arr = ["txt", 22, [], 99];
+    for ( let i=0; i < arr.length; i++ ) {
+      let element = arr[i];
+      console.log(element);
+    }
+    let data = ["jabłko", "cytryna", "pomidor"];
+    data.forEach(function(item,index,array) {
+      console.log(index, item);
+    });
+
+    // let a = ["a", "b"];
+    // let b = ["c", "d"];
+    // let c = a.concat(b); - łączy dwie tablice i powstaje nowa, oryginalne nie są zmieniane
+
+    let data1 = [1,2,3,4,5,6];
+    let result1 = data1.join();
+    console.log(result1);
+    console.log(data1.join("-"));
+    console.log(data1.reverse()); // reverse zmienia oryginalną tablicę
+    data1[data1.length] = 99; // ostatni pusty element
+    console.log(data1);
+
+    let lastElement = data1.pop(); // pobiera ostatni element i usuwa go z oryginału i zwraga co
+    console.log(lastElement);
+
+    // analogicznie data1.shift() ale pobiera i zwraca 1 element i modyfikuje oryginał
+
+    // unshift() - dodaje element na poczatek tablicy, zwraca nową długość tablicy, modyfikuje tablicę
+
+    let search1 = data1.indexOf(1);
+    console.log(search1); // otrzymamy numer indexu a jak nie ma to -1
+
+    // splice zmienia tablice poprzez usuniecie, zamiane oraz dodanie elementow, zwraca element skasowany czy zamieniany
+    // array.splice(start, deleteCount, item 1, item2...)
+    var months = ['styczen', 'luty', 'kwiecien'];
+    months.splice(2, 0, 'marzec');
+    console.log(months);
+
+    console.log('----- ZADANIA -----');
+    console.log('*** ZADANIE 1 ***');
+
+    let zad1 = [1,2,3,4,5,6,7,8,9,10];
+
+    for (i = 0; i < zad1.length; i++) {
+      const v = zad1[i];
+      zad1[i] = v * 2
+      console.log(zad1[i]);
+    }
+
+    console.log('*** ZADANIE 2 ***');
+    
+    function multipleArr(arr) {
+
+      let number = 1;
+
+      for ( let i = 0; i < arr.length; i++) {
+        number *= arr[i]; 
+      };
+      return number;
+    };
+  
+    let zad2 = [1,2,3];
+    console.log(multipleArr(zad2));
+
+    console.log('*** ZADANIE 3 ***');
+
+    function generateNumArray(arrLength) {
+      let arrNew = [];
+      
+      for (let i = 0; i < arrLength; i++) (
+        arrNew.push(i)
+      );
+      return arrNew;
+
+    };
+    const numArr = generateNumArray(3);
+
+    console.log(numArr);
+    console.log(numArr.pop());
+    console.log(numArr);
+
+    console.log('*** ZADANIE 4 ***');
+
+    function createSchoolGroup(groupLetter, numGroups) {
+      let arrSchool = [];
+      for ( i = 1; i <= numGroups; i++) (
+        arrSchool.push(i + groupLetter)
+        
+      )
+      return arrSchool;
+    }
+     const group1 = createSchoolGroup("a", 3);
+     const group2 = createSchoolGroup("b", 6);
+     const group3 = createSchoolGroup("c", 8);
+     console.log(group1);
+
+     let wholeSchool = group1.concat(group2).concat(group3);
+     console.log(wholeSchool);
+
+  </script>
+</body>
+</html>
