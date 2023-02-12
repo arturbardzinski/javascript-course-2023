@@ -114,6 +114,19 @@
      let wholeSchool = group1.concat(group2).concat(group3);
      console.log(wholeSchool);
 
+     console.log('*** ZADANIE 5 ***');
+
+     const myNames = ["Artur", "Robert", "Madzia", "Shirek", "Sasia"];
+
+     function combineNames(namesArr, sign) {
+        const newArray = namesArr.reverse();
+        return newArray.join(sign);
+     }
+     
+     const combinedData = combineNames(myNames, "|");
+     console.log(combinedData);
+     console.log(combinedData.split("|"));
+
   </script>
 </body>
 </html>

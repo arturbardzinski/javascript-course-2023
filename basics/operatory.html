@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // operator warunkowy
+    // warunek ? wartość1 : warość2
+    let age = 18;
+    let data = (age >= 18) ? "dorosły" : "nieletni";
+
+    //to samo co
+    // if (age >= 18) {
+    //   data = "dorosły";
+    // } else {
+    //   data = "nieletni";
+    // }
+
+    // operator przecinka
+
+    for (let i = 0, j = 5; i < 5; i++, j-- ) {
+      console.log("i:", i ," j:", j);
+    }
+
+    console.log('*** ZADANIE 1 ***');
+
+    let balance = 1000;
+    balance += 7000;
+    console.log(balance);
+    balance -= 2000;
+    console.log(balance);
+    balance *= 3;
+    console.log(balance);
+    balance -= 4000;
+    balance = ((balance + 4000) / 3) - 4000;
+    
+    console.log(balance);
+
+    // modulo = liczba % 2  jak parzysta to 0 jak nieparzysta to 1
+
+    function isEven(num) {
+      if (num % 2 == 0) {
+        return true; //parzysta
+      } else {
+        return false;
+      }
+    }
+
+    function isEven2(num) {
+      return num % 2 == 0;
+    }
+
+    console.log('*** ZADANIE 2 ***');
+
+    function recruitProgrammer(email, level,  yearsExp, languages) {
+      
+      if (level != "mid") {
+        console.log('nie jest midem');
+        return false;
+      }
+      let jsExp = false;
+      let tsExp = false;
+      if (languages.indexOf("JavaScript") >= 0) jsExp = true;
+      if (languages.indexOf("TypeScript") >= 0) tsExp = true;
+
+      if (jsExp || tsExp) {
+        if (yearsExp >= 1 && yearsExp < 6) {
+          console.log(email, "Spełnia wszystkie wymagania");
+          return true;
+        }
+      }
+      return false;
+      
+    };
+    recruitProgrammer("ania@test.com", "mid",4,["JavaScript" , "TypeScript"]);
+
+    console.log('*** ZADANIE 3 ***');
+
+    let user = {
+      email: "ania@test.com",
+      membershipCost: 100,
+      numMembershipYears: 3,
+      numberOfPosts: 40
+    };
+
+    function extendMemberShip(user) {
+      let membershipDiscountFlag = 
+      (user.numMembershipYears >= 2) ? true : false;
+
+      let minPostFlag = (user.numberOfPosts >= 30) ? true : false;
+      if (membershipDiscountFlag && minPostFlag) {
+        user.membershipCost *= 0.6;
+      console.log(user.email, "Ma znikę o wartości:", user.membershipCost);
+    } else {
+      console.log(user.email, "Nie ma zniki, czyli: ", user.membershipCost)
+    }
+  }
+
+    extendMemberShip(user);
+
+    console.log('*** ZADANIE 4 ***');
+    let article = {
+      date: new Date(2030,12,01),
+      title: "Tytul",
+      content: "To jest pierwszy wpis",
+      tags: ["blog", "lifestyle"],
+      version: 1
+    };
+
+    function validateArticle(art) {
+      if (! "title" in art || typeof art.title !== "string") {
+        console.log("nieprawidlowy tytul");
+        return false;
+      }
+      if (!"content" in art) {
+        return  false;
+      }
+      if (!"tags" in art || !Array.isArray(art.tags)) {
+        return false;
+      }
+      if (! article.version > 0) {
+        return false;
+      }
+      
+      
+      
+      console.log("Wszystko okej");
+      return true;
+      
+    }
+
+    console.log(validateArticle(article));
+    console.log(typeof article.version);
+
+  </script>
+</body>
+</html>
