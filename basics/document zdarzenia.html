@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="wrapper"> Loreem </div>
+
+  <script>
+
+    document.addEventListener("click", function(event) {
+      console.log("click:", event.clientX, event.clientY)
+    });
+
+    let div = document.getElementById("wrapper");
+    div.addEventListener("click", function(event) {
+      console.log("div klikniety")
+    });
+
+    // mouseenter mouseleave, mousemove, area.value, event.target.value
+
+  </script>
+</body>
+</html>
