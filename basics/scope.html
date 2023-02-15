@@ -11,6 +11,21 @@
   // var ma zakres globalny albo funkcyjny
   // let ma zakres blokowy w {}, zmienna lokalna
   // var pozwala na ponowna deklaracje tej samej zmiennej, ale let juz nie
+    let name = "Artur";
+    let surname = "Bardzinski";
+
+    function test(name) {
+      let surname = "Bardziu";
+      console.log("Imie :", name, "Nazwisko: ", surname);
+      if (typeof name === "string") {
+      let name = "Arturek";
+      console.log("name w if: ", name, "surname w if: ", surname);
+    }
+    }
+    
+
+    test("arti");
+    console.log("global name: ", name, "global surname: ", surname);
 
   </script>
 </body>
