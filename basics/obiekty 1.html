@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script> 
+    //funkcje konstruujace
+// konstru. z duzej aby odroznic od innych funkcji
+    function Car(brand, model) {
+      if((this instanceof Car) === false) 
+        return new Car(brand,model);
+      this.brand = brand; //this to nowo utworzony obiekt
+      this.model = model;
+      this.printInfo = function() {
+        console.log(this.brand, this.model)
+      }
+    }
+
+    const car = new Car("Fiat", "125p");
+    car.printInfo();
+
+    var obj = {
+      name: "test", size: 10,
+      log: function() {
+        console.log(this.name, this.size);
+      }
+    };
+
+    console.log(obj.name);
+    console.log(obj["size"]);
+    obj["log"](); 
+    if(obj.hasOwnProperty("name"))
+    console.log("ma name")
+
+    obj.codeName = "XP"; //dodanie nowej wlasciwosci
+    obj["codeName"] = "GD";
+
+    delete obj.name; // skasowanie wlasciwosci
+
+
+    //getter i setter
+    const user = {
+      _userName: null,
+      set name(n) {
+        if (typeof name === "string") {
+          this._userName = n[0].toUpperCase() + n.substr(1, n.length);
+        }},
+        get name() {
+            return this._userName;
+        }
+      }
+    user.name = "artur";
+    console.log(user.name);
+      // konstruktor
+    function Car1(year,speed) {
+      this.year = year;
+      this.speed = speed;
+      this.setYear = function(newYear) {
+        this.year = newYear;
+      }
+    }
+
+    var fiat = new Car1(2000,150);
+    console.log(fiat.year, fiat.speed);
+    fiat.setYear(2020);
+    console.log(fiat.year);
+    //tworzenie obiektu za pomoca notacji literalu
+    var test = {
+      a:12,
+      b:13,
+      obj: {
+          str: test
+      },
+      c:20,
+      printAbc: function () {
+        console.log("test: " + this.a)
+      }
+    };
+    test.printAbc();
+
+    var CarPlant = {
+      numProducedCars: 0,
+      carsArr: [],
+      makeCar: function (brand1, model1) {
+        var car = {
+          brand1: brand1,
+          model1: model1
+        };
+        this.numProducedCars++;
+        this.carsArr.push(car);
+        return car;
+      },
+      printStats1: function() {
+        console.log("Ilosc: " + this.numProducedCars);
+      }
+    };
+    var dodge = CarPlant.makeCar("dodge", "viper");
+    var nissan = CarPlant.makeCar("nissan", "3x");
+    CarPlant.printStats1();
+    CarPlant.carsArr;
+    // CarPlant.makeCar("jeep", "wrangler");
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script> //tworzenie za pomoca literalu
+// this piszemy jak poza funkcja dlatego finalPrice nizej bez this
+    let ShoppingCarts= {
+      items: [],
+      add: function(name, price) {
+        this.items.push({
+          name: name,
+          price: price
+        });
+      },
+      removeByIndex: function (i) {
+        if ( i>= this.items.length) return; //jak blad to za pomoca return wychodzimy
+        this.items.splice(i, 1);
+      },
+      printInfo: function(){
+        let finalPrice = 0;
+        for(let i = 0; i < this.items.length; i++){
+          let element = this.items[i];
+          //finalPrice lokalnie wewnatrz funkcji 
+          finalPrice += element.price;
+          console.log("W koszyku: " + element.name + ", cena: " + element.price);
+
+          console.log("Wartosc koszyka: " + finalPrice);
+        }
+      }
+    };
+
+    ShoppingCarts.add("maslo", 20);
+    ShoppingCarts.add("pomidory", 7);
+
+    ShoppingCarts.printInfo();
+    ShoppingCarts.removeByIndex(0);
+    ShoppingCarts.printInfo();
+    ShoppingCarts.add("ser", 30);
+    ShoppingCarts.printInfo();
+
+  </script>
+</body>
+</html>

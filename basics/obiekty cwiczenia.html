@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    
+    function createPlane(planeModel, planeYear, planeBrand)  {
+      return {
+        model: planeModel,
+        year: planeYear,
+        brand: planeBrand,
+        printInfo: function() {
+          console.log(this.model, this.year, this.brand);
+        }
+      };
+
+    }
+    let b = createPlane("127", 1987, "Boening");
+
+    //enumeracja 1
+    var obj = {a:12, b:"asd", c:90};
+    for(prop in obj){
+      if(obj.hasOwnProperty(prop))
+      console.log("prop: " + obj[prop]);
+    }
+    //enumeracja 2
+    var obj2 = {a:123, b:"asdf", c:900};
+    var keysArr = Object.keys(obj);
+    for(let i = 0; i<keysArr.length; i++) {
+      let name = keysArr[i];
+      console.log(name + ": " + obj2[name]);
+    }
+
+    let objEntries = Object.entries(obj);
+    console.log(objEntries);
+    for( [key, value] of objEntries ) {
+      console.log(key +": "+ value);
+    }
+    // plytkie kopiowanie, kopiowane sa referencje
+    var source = { a:5, b:10};
+    var result = Object.assign({}, source); //zamiast {} mozemy inny obiekt
+    // glebokie kopiowanie
+    var source1 = { a:5, b:10, arr:[1,2,3], date: new Date(2030,11,01)};
+    var copy01 = JSON.stringify(source1);
+    console.log(copy01);
+    copy02 = JSON.parse(JSON.stringify(source1));
+    console.log(copy02);
+    copy02.date = new Date(copy02.date);
+    console.log(copy02.date.getFullYear());
+
+    // getter i setter
+    var person = {
+      firstName: null,
+      lastName: null,
+
+      get fullName() {
+        return this.firstName + " " + this.lastName;
+      },
+      set fullName(newName) {
+        var splited = newName.split(" ");
+        this.firstName = splited[0];
+        this.lastName = splited[1];
+      }
+    };
+    person.fullName = "Artur Bardzinski";
+    // dodawanie
+    Object.defineProperty( obj, "new", {
+      value: 99,
+      writable: true,
+      configurable: true,
+      enumerable: true
+    } );
+    console.log(obj)
+
+  </script>
+</body>
+</html>
