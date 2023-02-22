@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //zebranie argumentow funkcji do tablicy za pomoca rest operator
+
+    function sumAll (...params) {
+      console.log("Parametry: ", params);
+      return params.reduce(function(acc, value) {
+        return acc + value
+      });
+    }
+    console.log(sumAll(10,20,30));
+
+    // jesli w params jest info to przypisz params.info a jak nie to przypisz domyslna wartosc
+    //var info = params.hasOwnProperty("info") ? params.info : "domyslna wartosc"; 
+    // lub mozna uzyc LUB
+   // var info = params.info || "domyslna wartosc";
+
+    //domyslne argumenty
+    function makeConnection(host = "www.google.pl", port = 80, method = "HTTP") {
+      console.log(host + port + method);
+    }
+
+    makeConnection();
+    makeConnection("www.ow.pl");
+  </script>
+</body>
+</html>

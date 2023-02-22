@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function test (arg){
+      console.log(arg);
+    }
+    var test = function(arg){
+      return arg*2; // jak nie damy to undefined
+    }
+    test(3);
+
+    function testOne (str, obj) {
+      str = "Artur";
+      obj.data = 99;
+    }
+
+    var someText = "Ania";
+    var someObj = {data:10};
+
+    testOne(someText, someObj);
+    // arguments dostaje sie do argumentow
+    function testTwo (a,b) {
+      for (let i = 0; i < arguments.length; i++)
+      console.log(i + ":" + arguments[i]);
+    }
+
+    testTwo(10,33,56,323,1134);
+    ////
+    
+    function parseData(jsonStr, onComplete, onError) {
+      try {
+        let result = JSON.parse(jsonStr);
+        onComplete(result);
+      } catch (e) {
+        onError();
+      }
+    }
+    function done(result) {console.log("ok" + result);};
+    function failed() {console.log("blad")};
+    parseData('{"data":99}', done, failed);
+
+    // funkcja nazwana
+    function foo(){};
+    foo();
+    // funkcja anonimowa przypisana do zmiennej
+    var abc = function(){};
+    abc();
+    // funkcja anonimowe moga byc tez zwracane
+    // accumulator czesto acc
+    var result1 = [10,20,30].reduce(function(accumulator, currentValue, index) {
+      return accumulator + currentValue;
+    });
+    console.log(result1);
+
+    function foo1 () {
+      return function(x){console.log(x*2);}
+    }
+    var test1 = foo1();
+    test(3);
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // wyrazenie funkcyjne
+    const exprFoo = function(a,b) {
+      console.log(a,b);
+    }
+    // tzw fat arrow
+    const arrowBar = (a,b) => console.log(a,b);
+    //return mozna pomijac np => a*b
+    let makeObf = () => {return {a:2,b:4}} // = () => ({a:2,b:4})
+    // funkcja strzalkowa ma zakres leksykalny przez co zachowuje kontekst swojego otoczenia np z this pobiera to co w funkcji nadrzednej
+  </script>
+</body>
+</html>
