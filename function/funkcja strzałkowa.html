@@ -17,6 +17,55 @@
     //return mozna pomijac np => a*b
     let makeObf = () => {return {a:2,b:4}} // = () => ({a:2,b:4})
     // funkcja strzalkowa ma zakres leksykalny przez co zachowuje kontekst swojego otoczenia np z this pobiera to co w funkcji nadrzednej
+
+    let multiply = (a,b) => {return a*b};
+    let multiply1 = (a,b) => a*b;
+
+    let splitStr = str => str.split(",");
+    let result = splitStr("1,2,3,4");
+    console.log(result);
+    // jak zwracamy obiekt to musza byc dodatkowo nawiasy okragle
+    let getObj = (a,b) => ({
+      data:a,
+      str:b
+    });
+    console.log(getObj(1,"test"));
+
+    [10,20,30].forEach( (a) => console.log(a));
+    [10,20,30].reduce( (acc,v) => acc + v); // da wynik 60
+    let someArr = [10,20,30];
+    //dwie metody:
+    // var arrResult = someArr.filter( v => {
+    //   if (v > 10) {
+    //     return true;
+    //   } else {
+    //     return false;
+    //   }
+    // });
+    var arrResult = someArr.filter( v => 
+      v > 10 ? true : false
+    );
+    console.log(arrResult);
+    //const print = function() {console.log(arguments);};
+    let printArrow = (...params) => console.log(params);
+    printArrow(10,77,99);
+    let addAll = (...args) => args.reduce( (acc,v)  => acc + v);
+    console.log(addAll(10,23,55,23,44));
+    // pamietaj ze funkcja strzalkowa nie moze byc uzyta jako konstruktor
+    function Car() {};
+    let car = new Car();
+    // roznice w this
+    let someObj = {
+      data:10,
+      print: function() {
+        console.log(this.data);
+      }
+    };
+    someObj.print();
+
+    window.setTimeout(function() {
+        console.log(this);
+    }, 1000);
   </script>
 </body>
 </html>

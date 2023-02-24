@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // IIFE to anonimowa funkcja wywolana natychmiast po jej odczytaniu
+    // (function() {
+    //   var data = 10;
+    //   function bar(){}
+    // }());
+
+    var result = (function () {
+      var innerData = "inner data";
+      function innerFunc() {
+        console.log(innerData);
+      };
+      return {data:10,
+              str: "text",
+              bar: innerFunc
+            };
+    })();
+
+    console.log(result);
+    console.log(result.bar());
+  </script>
+</body>
+</html>
