@@ -10,9 +10,37 @@
   <script>
     // call pozwala na wywolanie funkcji z podanymi this oraz argumentami, this okresla obiekt jako kontekst, gdzie jest uzyty kod
 
-    let obj = {
-      
-    }
+    let obj = {  // tu mamy literal obiektu
+      name: "Ola",
+      print: function(surname) {       //this wskazuje na obiekt obj z ktorego
+        console.log( this.name, surname); // pobrana jest wartosc name
+      }
+    };
+    obj.print();
+
+    //call pozwala na zmiane kontekstu z jakim wywolywana jest funkcja
+    let user = { name: "Artur" };
+    obj.print.call(user, "Kot"); // Artur Kot
+
+    // funkcja apply dziala tak samo jak call tylko przyjmuje tablice argumentow do funkcji
+
+    let obj2 = {
+      name2: "Robert",
+      print: function(surname2, city2) {
+        console.log(this.name2, surname2, city2);
+      }
+    };
+
+    obj2.print("Kot", "Lodz");
+
+    let user2 = {name2: "Artur"};
+    obj2.print.call(user2, "Kot", "Krakow");
+    obj2.print.apply(user2, ["Kot", "Krakow"]);
+
+    // bund wskazuje wprost kontekst this wywolywanej funkcji
+
+    var rInfo = obj2.print.bind(user2, "Musk", "Gdansk");
+    rInfo();
   </script>
 </body>
 </html>
