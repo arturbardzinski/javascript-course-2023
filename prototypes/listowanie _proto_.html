@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // odwolanie po __proto__ nie jest zalecane
+    function Car(name) {
+      this.name = name;
+    }
+    Car.prototype.brand = "ford";
+    Car.prototype.showInfo = function() {
+      console.log(this.brand, this.name);
+    }
+    
+    let mustang = new Car("mustang");
+    //listowanie wlasciwosci obiektu wraz z prototype
+    for (const prop in mustang) {
+      console.log(prop);
+    }
+    //listowanie wlasciwosci tylko obiektu
+    for (const prop in mustang) {
+      if (mustang.hasOwnProperty(prop))
+      console.log(prop);
+    }
+    
+  </script>
+</body>
+</html>

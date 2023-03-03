@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // namespaces - przestrzenie nazw pozwalaja na unikniecie konfliktow nazw zmiennych, obiektow oraz funkcji w globalnej przestrzeni nazw. JS nie ma wbudowanej przestrzebi nazw ale mozna je symulowac.
+    //Pozwalaja na lepsza organizacje kodu, jego grupowanie
+    //Zamiast wielu globalnych zmiennych mozna stworzyc jedna zmienna ktora jest podstawa naszej aplikacji, co zmiensza potencjalne problemy ze skryptami na stronie www(np statystyki googla)
+
+    var MYAPP = {
+      products: [],
+      Product: function(name, price) {
+        this.name = name;
+        this.price = price;
+        this.printInfo = function() {
+          console.log(this.name, ", price: ", this.price);
+        };
+      },
+      addProduct: function(name, price) {
+        let p = new MYAPP.Product(name,price);
+        this.products.push(p);
+      }
+    };
+
+    MYAPP.addProduct("telefon", 1400);
+    MYAPP.products[0].printInfo();
+
+    //kod mozemy latwo rozszerzyc w kolejnych plikach
+    if (!MYAPP.utils) {
+      MYAPP.utils = {
+      parseData: function() {
+        let p = new MYAPP.Product();
+      }
+      }
+    };
+    MYAPP.config = {
+      languaage: "English"
+    }
+    var MYAPP = MYAPP || {}; //jesli istnieje to jest przypisywany do zmiennej lub ....
+    if(!MYAPP) MYAPP = {};
+    var MYAPP = MYAPP === undefined ? {} : MYAPP;
+    // automatyczne tworzenie
+    var MYAPP = MYAPP || {}; //upewniamy sie ze nie istnieje
+    var math = extendNS(MYAPP, "MYAPP.utils.math");
+    function extendNS(ns, nsStr) {
+      let nsParts = nsStr.split("."), parent = ns;
+      console.log(nsParts);
+      if(nsParts[0] == "MYAPP") nsParts = nsParts.slice(1);
+      for(let i=0; i<nsParts.length; i++) {
+        let nsName = nsParts[i];
+        if(typeof ns[nsName] == "undefined") {
+          parent[nsName] = {};
+        }
+        parent = parent[nsName];
+        console.log(nsName);
+      }
+      return parent;
+    }
+
+    var math = extendNS(MYAPP, "MYAPP.utils.math");
+
+    // w malych aplikacjach lepiej stosowac funkcje natychmiastowe
+
+    var namespace = (function() {
+      let somePrivateStr = "Ala ma kota";
+      function privateMethod1() {
+        return somePrivateStr;
+      }
+      let privateConfig = {
+        language: "Polish"
+      };
+      function privateMethod2() {}
+
+      return {
+        publicConfig: privateConfig,
+        publicGetSTr: privateMethod1,
+        utils: {
+          publicMethod: privateMethod2
+        }
+      }
+    })();
+
+    namespace.publicConfig.language = "English";
+    namespace.publicGetSTr();
+    name.utils.publicMethod();
+
+  </script>
+</body>
+</html>
