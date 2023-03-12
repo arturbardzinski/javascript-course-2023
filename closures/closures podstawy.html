@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // domkniecie to zasieg stworzony przez funkcje wraz z otaczajacym ją środowiskiem czyli zmiennymi oraz innymi funkcjami, ktore oddzielone są od reszty kodu
+
+      let b = 99; // zmienna globalna
+      let c = 7;
+      function foo() {
+        let b = 10; // osobna zmienna lokalna
+        c = -1; // dostep do globalnej i jej podmiana bo nie uzywamy let, var, const
+        console.log("b: " + b); // odwolanie sie do b lokalnego
+      }
+      foo(); //b:10
+
+      let d = 100;
+
+      function foo1() {
+        let e = 10;
+        function bar1() {
+          let f = 5;
+          console.log("f: " + f, "e: " + e);
+        }
+        return bar1; //bar zwraca cialo funkcji, nie wywoluje jej
+        // to jest domkniecie, gdzie JS zachowuje referencje do zmiennych/środowiska, ktore otaczaly funkcje bar
+      }
+
+      //w show jest zwrocona referencja do bar
+      const show = foo1();
+      //funkcje wywolujemy z ()
+
+      show();
+
+      function outer() {
+        var g = 15;
+        function inner() {
+          var z = 1;
+          console.log(g);
+        }
+        return inner;
+      }
+
+      const testInner = outer();
+      testInner();
+      console.dir(testInner) //pokaze dostepne scopes
+    </script>
+  </body>
+</html>
