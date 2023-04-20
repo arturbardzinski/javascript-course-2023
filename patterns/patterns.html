@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // creational pattern - wzorzec konstrukcyjny
+      class Album {
+        constructor(name, band) {
+          this.name = name;
+          this.band = band;
+        }
+        printInfo() {
+          console.log(`${this.band}: ${this.name}`);
+        }
+      }
+
+      const rhcp = new Album("test", "test2");
+      rhcp.printInfo();
+
+      class DigitalAlbum extends Album {
+        constructor(name, band, shop) {
+          super(name, band);
+          this.shop = shop;
+        }
+        printInfo() {
+          super.printInfo();
+          console.log(this.shop);
+        }
+      }
+
+      let digit = new DigitalAlbum("test3", "test4", "yt");
+      digit.priintInfo();
+
+      // singleton pattern - ogranicza stworzenie tylkoo jednej instancji obiektu
+      // raz stworzona instancja juz zawsze bedzie zwracana jako referencja np. przy probie stworzenia kolejnej
+      // stosuje sie przy: obiektach konfiguracyjnych, polaczeniach z baza danych, zapisywania logow
+
+      let Singleton = (function () {
+        let instance = null;
+        let privateLang = "en";
+
+        function Configuration() {
+          this.getLanguage = function () {
+            return privateLang;
+          };
+          this.setLanguage = function (lang) {
+            privateLang = lang;
+          };
+          return {
+            getInstance: function () {
+              if (!instance) {
+                instance = new Configuration();
+              }
+              return instance;
+            },
+          };
+        }
+      })();
+
+      Singleton.getInstance().getLanguage(); // en
+      var config = Singleton.getInstance();
+      config.setLanguage("pl");
+      config.getInstance();
+
+      var config2 = Singleton.getInstance();
+      config.getLanguage(); // pl  jedna instacja, odwoluje sie do tego samego
+
+      // module pattern samodzielne jednostki kodu zwykle odpowiedzialne za pojedyncza funkcjonalnosc. Wiele modulow moze komunikowac sie ze soba wykorzystujac udostepnione publiczne metody oraz zmienne
+      // najczesciej tworzy sie go z wykorzystaniem funkcji natychmiastowej zwracajacej obiekt z publicznym API
+
+      const Module = (function (globaalObj) {
+        let privateData = 10;
+
+        return {
+          // interfejs publicznych metod API
+          getData: function () {
+            return privateData;
+          },
+          setData: function (data) {
+            privateData = data;
+          },
+        };
+      })(window);
+
+      // w ES6 mozna importowac moduly, wtedy w html w head dajemy
+      // <script type="module" src=""> < /script>
+      // <script type="module">
+      // nastepnie import * as myModule from "./...js";
+      // trzeba pamietac o export function foo() {}
+    </script>
+  </body>
+</html>

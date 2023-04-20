@@ -1,0 +1,18 @@
+{
+  "books": [
+    {
+      "title": "Ksiazka #1",
+      "description": "Opis ksiazki",
+      "year": 1997,
+      "firstEdition": true,
+      "authors": ["Ola", "Ania", "Rafal"],
+      "subTitle": null,
+      "address": { "city": "Wawa", "street": "X" }
+    },
+    {
+      "title": "Ksiazka #2",
+      "description": "Ksiazka kucharska",
+      "year": "2010"
+    }
+  ]
+}
